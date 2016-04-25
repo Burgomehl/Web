@@ -8,12 +8,20 @@
 </head>
 <body>
 	<table border="1">
-		<c:forEach var="item" items="${xml.persons.stream().filter(v->v.contains("Chris")).toList()}">
-			<tr>
-				<td><a href="MVCHandler?Name=${item.key}">${item.key}</a></td>
-				<td>${item.value}</td>
-			</tr>
-		</c:forEach>
+		<form>
+			<input name="Seite" value="Suche" type="hidden" /> <input size="50"
+				value="suchanfrage" name="suche" type="text" />
+			<button>Okay</button>
+		</form>
+		<c:if test="${xml.searchedPerson!=null}">
+			<c:forEach var="item" items="${xml.persons}">
+				<tr>
+					<td><a href="MVCHandler?Name=${item.key}">${item.key}</a></td>
+					<td>${item.value}</td>
+				</tr>
+			</c:forEach>
+		</c:if>
 	</table>
+
 </body>
 </html>

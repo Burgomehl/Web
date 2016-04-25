@@ -13,20 +13,35 @@ import javax.servlet.http.HttpServletResponse;
 public class MVCHandler extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		XmlReaderBean bean = XmlReaderBean.createInstance();
+		XmlReaderBean bean = ProjectFactory.getReader();
 		String name = req.getParameter("Name");
-		String seite;
-		if(name != null && !name.isEmpty()){
-			Person person = Person.createInstance();
-			req.setAttribute("person", person);
-			String jsp = "../html/Uebung4/MVC4_1_a2_Person.jspx";
-			RequestDispatcher dispatcher = req.getRequestDispatcher(jsp);
-			dispatcher.forward(req, resp);
-		}else{
-		req.setAttribute("xml",bean);
-		String jsp = "../html/Uebung4/MVC4_1_a.jspx";
+		String seite = req.getParameter("Seite");
+
+		if (seite != null && !seite.isEmpty()) {
+			if (seite.equals("Suche")) {
+				String suche = req.getParameter("suche");
+				bean.setSearchedPerson(suche);
+				System.out.println(bean.getSearchedPerson());
+				req.setAttribute("xml", bean);
+				confSide("../html/Uebung4/MVC4_1_a_Suche.jspx", req, resp);
+			} else if (seite.equals("Listenausgabe")) {
+				req.setAttribute("xml", bean);
+				confSide("../html/Uebung4/MVC4_1_a.jspx", req, resp);
+			}
+		} else {
+			if (name != null && !name.isEmpty()) {
+				Person person = ProjectFactory.getPerson();
+				req.setAttribute("person", person);
+				confSide("../html/Uebung4/MVC4_1_a2_Person.jspx", req, resp);
+			} else {
+				confSide("../html/Uebung4/MVC4_1_Startseite.jspx", req, resp);
+			}
+		}
+	}
+	
+	private void confSide(String side, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+		String jsp = side;
 		RequestDispatcher dispatcher = req.getRequestDispatcher(jsp);
 		dispatcher.forward(req, resp);
-		}
 	}
 }

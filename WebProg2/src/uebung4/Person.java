@@ -9,8 +9,8 @@ public class Person {
 	private String lastname;
 	private String childrenCount;
 	private String residence;
-	
-	public Map<String, String> getPersonmap(){
+
+	public Map<String, String> getPersonmap() {
 		Map<String, String> map = new HashMap<>();
 		map.put("Surename", surename);
 		map.put("lastname", lastname);
@@ -18,25 +18,26 @@ public class Person {
 		map.put("Amount of Children", childrenCount);
 		return map;
 	}
-	
-	public static Person createInstance(){
-		Person p = new Person();
-		p.setChildrenCount("10");
-		p.setLastname("Byl");
-		p.setSurename("Benjamin");
-		p.setResidence("An der Mühle");
-		return p;
+
+	public Person() {
+		setChildrenCount("10");
+		setLastname("Byl");
+		setSurename("Benjamin");
+		setResidence("An der Mühle");
 	}
-	
+
 	public String getSurename() {
 		return surename;
 	}
+
 	public void setSurename(String surename) {
 		this.surename = surename;
 	}
+
 	public String getLastname() {
 		return lastname;
 	}
+
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
@@ -44,6 +45,7 @@ public class Person {
 	public String getResidence() {
 		return residence;
 	}
+
 	public void setResidence(String residence) {
 		this.residence = residence;
 	}

@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.jdom2.Content;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.input.SAXBuilder;
@@ -14,9 +13,9 @@ public class XmlReaderBean {
 	private Map<String, String> persons;
 	private String searchedPerson;
 
-	private XmlReaderBean() {
+	public XmlReaderBean() {
 		persons = new HashMap<>();
-		File f = new File("X:/WebProg2Ordner/WEB-INF/classes/Uebung3/persons.xml");
+		File f = new File("D:/Uni/WebProg2Ordner/WEB-INF/classes/Uebung3/persons.xml");
 		Document doc = null;
 		try {
 			SAXBuilder builder = new SAXBuilder();
@@ -26,10 +25,6 @@ public class XmlReaderBean {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public static XmlReaderBean createInstance(){
-		return new XmlReaderBean();
 	}
 
 	private void searchPersons(Element ele) {
@@ -49,7 +44,7 @@ public class XmlReaderBean {
 					searchPersons(element);
 				}
 			}
-			if(nachname.isEmpty()){
+			if (nachname.isEmpty()) {
 				nachname = "*";
 			}
 			persons.put(vorname, nachname);
@@ -62,6 +57,13 @@ public class XmlReaderBean {
 	}
 
 	public Map<String, String> getPersons() {
+		if(searchedPerson != null && !searchedPerson.isEmpty()){
+			 if(persons.containsKey(searchedPerson)){
+				 Map<String , String > tmp = new HashMap();
+				 tmp.put(searchedPerson, persons.get(searchedPerson));
+				 return tmp;
+			 }
+		}
 		return persons;
 	}
 
