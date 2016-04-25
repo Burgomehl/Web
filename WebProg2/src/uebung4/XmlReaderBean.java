@@ -59,10 +59,11 @@ public class XmlReaderBean {
 	public Map<String, String> getPersons() {
 		if(searchedPerson != null && !searchedPerson.isEmpty()){
 			 if(persons.containsKey(searchedPerson)){
-				 Map<String , String > tmp = new HashMap();
+				 Map<String , String > tmp = new HashMap<String,String>();
 				 tmp.put(searchedPerson, persons.get(searchedPerson));
 				 return tmp;
 			 }
+				 return null;
 		}
 		return persons;
 	}

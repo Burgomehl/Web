@@ -10,7 +10,7 @@
 	<table border="1">
 		<form>
 			<input name="Seite" value="Suche" type="hidden" /> <input size="50"
-				value="suchanfrage" name="suche" type="text" />
+				value="" name="suche" type="text" />
 			<button>Okay</button>
 		</form>
 		<c:if test="${xml.searchedPerson!=null}">
