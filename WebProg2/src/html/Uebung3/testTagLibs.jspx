@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	<jsp:directive.page isELIgnored="false"></jsp:directive.page>
+	<head>
+		<title>Testing JSTL</title>
+	</head>
+	<body>
+		<h1>Testing JSTL</h1>
+		<ul>
+			<c:choose>
+				<c:when test="true">
+					<p>Wenn Sie diese Zeile lesen, sollte die JSTL auf dem Server funktionieren.</p>
+
+					<p>Und der Ausdruck "\${1+1==2}" sollte "true" liefern: ${1+1==2}</p>
+				</c:when>
+				<c:when test="false">
+					<p>
+						<b>Wenn Sie aber auch diese Zeile lesen, dann funktioniert die JSTL auf dem
+							Server leider nicht!</b>
+					</p>
+				</c:when>
+			</c:choose>
+		</ul>
+	</body>
+</html>

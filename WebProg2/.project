@@ -14,11 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>src/html</name>
-			<type>2</type>
-			<locationURI>PARENT-3-PROJECT_LOC/WebProg2Ordner/html</locationURI>
-		</link>
-	</linkedResources>
 </projectDescription>
